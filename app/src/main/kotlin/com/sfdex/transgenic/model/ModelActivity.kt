@@ -1,30 +1,37 @@
 package com.sfdex.transgenic.model
 
 import android.os.Bundle
-import android.os.SystemClock
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.gson.Gson
+import com.sfdex.transgenic.R
+import com.sfdex.transgenic.ui.theme.Pink80
+import com.sfdex.transgenic.ui.theme.Purple40
 import com.sfdex.transgenic.ui.theme.TransgenicTheme
 import java.io.BufferedReader
 import java.io.File
@@ -44,17 +51,35 @@ class ModelActivity : ComponentActivity() {
 
     private var models = mutableStateListOf<Model>()
 
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         readModelsFromAssets()
         setContent {
             TransgenicTheme {
+                //MaterialTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ChooseModels()
+                    Scaffold(topBar = {
+                        TopAppBar(
+                            title = {
+                                Text(text = getString(R.string.app_name))
+                            },
+                            colors = TopAppBarDefaults.topAppBarColors(
+                                containerColor = Pink80,
+                                titleContentColor = Color.Red,
+                                actionIconContentColor = Purple40
+                            ),
+                            actions = {
+                                Icon(Icons.Filled.Favorite, contentDescription = "")
+                            })
+                    }) {
+                        it.toString()
+                        ChooseModels()
+                    }
                 }
             }
         }

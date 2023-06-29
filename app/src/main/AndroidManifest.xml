@@ -15,7 +15,6 @@
         <activity
             android:name=".model.ModelActivity"
             android:exported="false"
-            android:label="@string/title_activity_model"
             android:theme="@style/Theme.Transgenic" />
         <activity
             android:name=".MainActivity"

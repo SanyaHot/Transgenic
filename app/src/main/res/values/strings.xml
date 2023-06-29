@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Transgenic</string>
+    <string name="title_activity_model">ModelActivity</string>
+    <string name="xposed_description">Performing genetic engineering on Android.</string>
+</resources>

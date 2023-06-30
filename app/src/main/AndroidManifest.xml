@@ -14,11 +14,11 @@
         android:theme="@style/Theme.Transgenic"
         tools:targetApi="31">
         <activity
-            android:name=".model.ModelActivity"
+            android:name=".ui.ModelActivity"
             android:exported="false"
             android:theme="@style/Theme.Transgenic" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Transgenic">

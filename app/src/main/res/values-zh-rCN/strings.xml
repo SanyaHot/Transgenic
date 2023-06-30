@@ -2,4 +2,5 @@
 <resources>
     <string name="xposed_description">安卓手机上的转基因工程</string>
     <string name="app_name">转基因手机</string>
+    <string name="change_model">更换型号</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.sfdex.transgenic.model
+package com.sfdex.transgenic.ui
 
 import android.os.Bundle
 import android.widget.Toast
@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import com.google.gson.Gson
 import com.sfdex.transgenic.App
 import com.sfdex.transgenic.R
+import com.sfdex.transgenic.model.Model
 import com.sfdex.transgenic.ui.theme.Pink80
 import com.sfdex.transgenic.ui.theme.Purple40
 import com.sfdex.transgenic.ui.theme.TransgenicTheme
@@ -147,6 +148,7 @@ class ModelActivity : ComponentActivity() {
 @Composable
 fun ChooseModels(brands: ArrayList<String>, allBrandsModels: ArrayList<Model>) {
     val models = remember { mutableStateListOf<Model>() }
+    //var models by remember { mutableStateOf(mutableListOf<Model>())}
     models.addAll(allBrandsModels)
     Row {
         //var isExpanded by remember { mutableStateOf(false) }
@@ -161,6 +163,7 @@ fun ChooseModels(brands: ArrayList<String>, allBrandsModels: ArrayList<Model>) {
                     models.addAll(
                         allBrandsModels.filter { it.brand == brand }
                     )
+                    //models = allBrandsModels.filter { it.brand == brand } as MutableList<Model>
                 })
                 Divider()
             }
@@ -177,13 +180,13 @@ fun DeviceList(models: MutableList<Model>, modifier: Modifier) {
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         items(models) { model ->
-            Column {
-                var expandable by remember {
-                    mutableStateOf(false)
-                }
-                Text(text = model.fullModelName, Modifier.clickable {
-                    expandable = !expandable
-                })
+            var expandable by remember {
+                mutableStateOf(false)
+            }
+            Column(Modifier.clickable {
+                expandable = !expandable
+            }) {
+                Text(text = model.fullModelName)
                 if (expandable) {
                     Spacer(modifier = Modifier.height(5.dp).background(Color.Blue))
                     Text(text = model.toString(), color = Color.Red)

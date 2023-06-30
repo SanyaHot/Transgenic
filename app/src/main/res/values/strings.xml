@@ -1,4 +1,5 @@
 <resources>
     <string name="xposed_description">Performing genetic engineering on Android.</string>
     <string name="app_name">Transgenic</string>
+    <string name="change_model">Change model</string>
 </resources>

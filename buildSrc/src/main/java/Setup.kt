@@ -69,12 +69,12 @@ private val Project.androidComponents
 
 fun Project.setupCommon() {
     androidBase {
-        compileSdkVersion(33)
-        buildToolsVersion = "33.0.2"
+        compileSdkVersion(34)
+        buildToolsVersion = "34.0.0"
 
         defaultConfig {
             minSdk = 24
-            targetSdk = 33
+            targetSdk = 34
         }
 
         compileOptions {
@@ -136,7 +136,7 @@ private fun Project.setupAppCommon() {
         }
 
         composeOptions {
-            kotlinCompilerExtensionVersion = "1.4.7"
+            kotlinCompilerExtensionVersion = "1.5.3"
         }
 
         packaging {
